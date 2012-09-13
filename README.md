@@ -6,8 +6,8 @@ This version contain a server (in java) and a client for android.
 
 Folders
 ===========
-. RemoteMouseClient -> Android client
-. RemoteMouseServer -> Desktop Server
++ RemoteMouseClient : Android client
++ RemoteMouseServer : Desktop Server
 
 By
 ===========
