@@ -11,7 +11,9 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int ic_action_search=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int ic_tab_mouse=0x7f020002;
     }
     public static final class id {
         public static final int buttonConnect=0x7f050005;
@@ -21,13 +23,18 @@ public final class R {
         public static final int textViewIp2=0x7f050002;
         public static final int textViewIp3=0x7f050003;
         public static final int textViewIp4=0x7f050004;
+        public static final int view_events_keyboard_radio_group=0x7f050008;
+        public static final int view_events_keyboard_radio_number=0x7f050009;
+        public static final int view_events_keyboard_radio_text=0x7f05000a;
+        public static final int view_events_keyboard_text=0x7f050007;
     }
     public static final class layout {
         public static final int view_connection=0x7f030000;
-        public static final int view_events=0x7f030001;
+        public static final int view_events_keyboard=0x7f030001;
+        public static final int view_events_mouse=0x7f030002;
+        public static final int view_tab=0x7f030003;
     }
     public static final class string {
-        public static final int app_name=0x7f040001;
-        public static final int hello=0x7f040000;
+        public static final int app_name=0x7f040000;
     }
 }

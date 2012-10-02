@@ -15,31 +15,35 @@ import views.FrameConnection;
  */
 public class FrameConnectionController implements ActionListener {
 
-    FrameConnection _frame;
-    UDPServer _server;
+    private FrameConnection frame;
+    private UDPServer server;
 
     public FrameConnectionController() {
 
-        _frame = new FrameConnection(this);
+        frame = new FrameConnection(this);
 
-        _server = new UDPServer();
-        _frame.textfieldIP.setText(_server.getMyIP());
+        server = new UDPServer();
+        frame.textfieldIP.setText(server.getMyIP());
+        frame.textfieldPort.setText(String.valueOf(server.PORT));
 
-        _frame.setVisible(true);
+        frame.setVisible(true);
+        
+        server.start();
+        frame.buttonStart.setText("Stop");
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (!_server.isConnected()) {
+        if (!server.isConnected()) {
 
-            _server.start();
+            server.start();
 
-            _frame.buttonStart.setText("Stop");
+            frame.buttonStart.setText("Stop");
         }
         else {
-            _server.stop();
+            server.stop();
 
-            _frame.buttonStart.setText("Start");
+            frame.buttonStart.setText("Start");
         }
     }
 }

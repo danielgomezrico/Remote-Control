@@ -1,7 +1,7 @@
 package remote.mouse.activities;
 
 import remote.mouse.R;
-import remote.mouse.model.UDPClient;
+import remote.mouse.model.udp.Client;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
-public class ConnectionActivity extends Activity {
+public class ViewConnection extends Activity {
 
-	private String serverIP = "192.168.1.101";
+	private String serverIP = "192.168.1.135";
 	private int PORT = 5005;
 
 	/** Called when the activity is first created. */
@@ -28,11 +28,11 @@ public class ConnectionActivity extends Activity {
 		serverIP = getIpFromViews();
 		
 		//Init the UDP Client
-		UDPClient.getInstance().connect(serverIP, PORT);
+		Client.getInstance().connect(serverIP, PORT);
 
 
 		//TODO: Manage errors
-		Intent newActivity = new Intent(this, EventsActivity.class);
+		Intent newActivity = new Intent(this, ViewTab.class);
 		startActivity(newActivity);
 	}
 
@@ -52,7 +52,7 @@ public class ConnectionActivity extends Activity {
 	
 	@Override
 	protected void onDestroy() {
-		UDPClient.getInstance().disconnect();
+		Client.getInstance().disconnect();
 		super.onDestroy();
 	}
 

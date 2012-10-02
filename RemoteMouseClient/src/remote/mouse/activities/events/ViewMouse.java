@@ -1,7 +1,7 @@
-package remote.mouse.activities;
+package remote.mouse.activities.events;
 
 import remote.mouse.R;
-import remote.mouse.model.UDPClient;
+import remote.mouse.model.MessageSender;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -10,29 +10,28 @@ import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.widget.LinearLayout;
 
-public class EventsActivity extends Activity implements OnTouchListener{
+public class ViewMouse extends Activity implements OnTouchListener {
 
 	private int _lastMouseX, _lastMouseY;
-	private UDPClient _client;
+	private MessageSender sender;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.view_events);
+		setContentView(R.layout.view_events_mouse);
 
-		//Set the touch listener
-		((LinearLayout)findViewById(R.id.layoutMain)).setOnTouchListener(this);
+		// Set the touch listener
+		((LinearLayout) findViewById(R.id.layoutMain)).setOnTouchListener(this);
 
-		_client = UDPClient.getInstance();
+		sender = MessageSender.getInstance();
 	}
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 
-		int x = (int)event.getX();
-		int y = (int)event.getY();
+		int x = (int) event.getX();
+		int y = (int) event.getY();
 
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
@@ -44,7 +43,7 @@ public class EventsActivity extends Activity implements OnTouchListener{
 
 		case MotionEvent.ACTION_MOVE:
 
-			_client.send(String.format("m %d %d", x - _lastMouseX, y - _lastMouseY));
+			sender.sendMouseMessage(x - _lastMouseX, y - _lastMouseY);
 
 			_lastMouseX = x;
 			_lastMouseY = y;
@@ -61,12 +60,5 @@ public class EventsActivity extends Activity implements OnTouchListener{
 		}
 
 		return true;
-	}
-
-	@Override
-	protected void onDestroy() {
-		_client.disconnect();
-
-		super.onDestroy();
 	}
 }
