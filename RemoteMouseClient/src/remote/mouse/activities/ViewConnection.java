@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class ViewConnection extends Activity {
 
-	private String serverIP = "192.168.1.135";
+	private String serverIP = "192.168.1.105";
 	private int PORT = 5005;
 
 	/** Called when the activity is first created. */

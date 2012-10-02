@@ -1,6 +1,7 @@
 package remote.mouse.activities.events;
 
 import remote.mouse.R;
+import remote.mouse.model.KeyboardManager;
 import remote.mouse.model.MessageSender;
 import android.app.Activity;
 import android.content.Context;
@@ -16,8 +17,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class ViewKeyboard extends Activity implements TextWatcher,
 		OnKeyListener {
@@ -79,7 +78,9 @@ public class ViewKeyboard extends Activity implements TextWatcher,
 			final int before, final int count) {
 
 		if (count != 0) {
-			MessageSender.getInstance().sendKeyboardMessage(s + "");
+			Log.d("Key + ", s + "");
+			String value = KeyboardManager.getValueToSend(s.charAt(0));
+			MessageSender.getInstance().sendKeyboardMessage(value);
 		}
 
 	}
@@ -92,37 +93,13 @@ public class ViewKeyboard extends Activity implements TextWatcher,
 	public boolean onKey(View arg0, int keyCode, KeyEvent event) {
 
 		if (event.getAction() == KeyEvent.ACTION_DOWN) {
-			switch (keyCode) {
-			case KeyEvent.KEYCODE_DEL:
-				MessageSender.getInstance().sendKeyboardMessage("BACK_SPACE");
-				break;
-			case KeyEvent.KEYCODE_ENTER:
-				MessageSender.getInstance().sendKeyboardMessage("ENTER");
-				break;
-			case KeyEvent.KEYCODE_TAB:
-				MessageSender.getInstance().sendKeyboardMessage("TAB");
-				break;
-			case KeyEvent.KEYCODE_SHIFT_LEFT:
-			case KeyEvent.KEYCODE_SHIFT_RIGHT:
-				MessageSender.getInstance().sendKeyboardMessage("CAPS");
-				break;
-			case KeyEvent.KEYCODE_MINUS:
-				MessageSender.getInstance().sendKeyboardMessage("MINUS");
-				break;
-			case KeyEvent.KEYCODE_PLUS:
-				MessageSender.getInstance().sendKeyboardMessage("PLUS");
-				break;
-			case KeyEvent.KEYCODE_COMMA:
-				MessageSender.getInstance().sendKeyboardMessage("COMMA");
-				break;
-				
-			case KeyEvent.KEYCODE_PERIOD:
-				MessageSender.getInstance().sendKeyboardMessage("PERIOD");
+			Log.d("Key2 + ", keyCode + "");
+			String value = KeyboardManager.getValueToSend(keyCode);
 
-			default:
-
-				break;
+			if (value != null) {
+				MessageSender.getInstance().sendKeyboardMessage(value);
 			}
+
 		}
 
 		return false;
