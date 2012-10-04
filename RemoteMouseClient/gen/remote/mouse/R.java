@@ -16,13 +16,13 @@ public final class R {
         public static final int ic_tab_mouse=0x7f020002;
     }
     public static final class id {
-        public static final int buttonConnect=0x7f050005;
         public static final int layoutMain=0x7f050006;
-        public static final int textViewInfo=0x7f050000;
-        public static final int textViewIp1=0x7f050001;
-        public static final int textViewIp2=0x7f050002;
-        public static final int textViewIp3=0x7f050003;
-        public static final int textViewIp4=0x7f050004;
+        public static final int view_connection_button_connect=0x7f050005;
+        public static final int view_connection_text_ip=0x7f050000;
+        public static final int view_connection_text_ip1=0x7f050001;
+        public static final int view_connection_text_ip2=0x7f050002;
+        public static final int view_connection_text_ip3=0x7f050003;
+        public static final int view_connection_text_ip4=0x7f050004;
         public static final int view_events_keyboard_radio_group=0x7f050008;
         public static final int view_events_keyboard_radio_number=0x7f050009;
         public static final int view_events_keyboard_radio_text=0x7f05000a;
@@ -36,5 +36,8 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int view_connection_button_text_connect=0x7f040003;
+        public static final int view_connection_info_text_ip=0x7f040001;
+        public static final int view_connection_info_text_port=0x7f040002;
     }
 }

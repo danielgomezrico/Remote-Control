@@ -48,10 +48,9 @@ public class MessageSender {
 	public void sendKeyboardMessage(String value) {
 
 		if (value.equals(" ")) {
-			value = "SPACE";  
+			value = "SPACE";
 		}
 
-		Log.d("key", "k " + value);
 		client.send("k " + value);
 
 	}

@@ -4,11 +4,6 @@ package model.managers;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class KeyboardManager {
     
@@ -63,11 +58,32 @@ public class KeyboardManager {
         else if(key.equals("RIGHT")){ return KeyEvent.VK_RIGHT;}
         else if(key.equals("DOWN")){ return KeyEvent.VK_DOWN;}
         else if(key.equals("DELETE")){ return KeyEvent.VK_DELETE;}
-        else if(key.equals("SPACE")){ return KeyEvent.VK_SPACE;}
-        else if(key.equals("COMMA")){ return KeyEvent.VK_COMMA;}
-        else if(key.equals("MINUS")){ return KeyEvent.VK_MINUS;}
-        else if(key.equals("PERIOD")){ return KeyEvent.VK_PERIOD;}
-        else if(key.equals("SLASH")){ return KeyEvent.VK_SLASH;}
+        else if(key.equals("EURO_SIGN¬")){ return KeyEvent.VK_EURO_SIGN;}
+        else if(key.equals(" ")){ return KeyEvent.VK_SPACE;}
+        else if(key.equals(",")){ return KeyEvent.VK_COMMA;}
+        else if(key.equals("-")){ return KeyEvent.VK_MINUS;}
+        else if(key.equals(".")){ return KeyEvent.VK_PERIOD;}
+        else if(key.equals(":")){ return KeyEvent.VK_COLON;}
+        else if(key.equals(";")){ return KeyEvent.VK_SEMICOLON;}
+        else if(key.equals("/")){ return KeyEvent.VK_SLASH;}
+        else if(key.equals("=")){ return KeyEvent.VK_EQUALS;}
+        else if(key.equals("[")){ return KeyEvent.VK_OPEN_BRACKET;}
+        else if(key.equals("]")){ return KeyEvent.VK_CLOSE_BRACKET;}
+        else if(key.equals("\\")){ return KeyEvent.VK_BACK_SLASH;}
+        else if(key.equals("*")){ return KeyEvent.VK_MULTIPLY;}
+        else if(key.equals("+")){ return KeyEvent.VK_PLUS;}
+        else if(key.equals("\"")){ return KeyEvent.VK_QUOTE;}
+        else if(key.equals("&")){ return KeyEvent.VK_AMPERSAND;}
+        else if(key.equals("<")){ return KeyEvent.VK_LESS;}
+        else if(key.equals(">")){ return KeyEvent.VK_GREATER;}
+        else if(key.equals("^")){ return KeyEvent.VK_CIRCUMFLEX;}
+        else if(key.equals("$")){ return KeyEvent.VK_DOLLAR;}
+        else if(key.equals("!")){ return KeyEvent.VK_EXCLAMATION_MARK;}
+        else if(key.equals("Á")){ return KeyEvent.VK_INVERTED_EXCLAMATION_MARK;}
+        else if(key.equals("(")){ return KeyEvent.VK_LEFT_PARENTHESIS;}
+        else if(key.equals(")")){ return KeyEvent.VK_RIGHT_PARENTHESIS;}
+        else if(key.equals("#")){ return KeyEvent.VK_NUMBER_SIGN;}
+        else if(key.equals("_")){ return KeyEvent.VK_UNDERSCORE;}
         else if(key.equals("0")){ return KeyEvent.VK_0;}
         else if(key.equals("1")){ return KeyEvent.VK_1;}
         else if(key.equals("2")){ return KeyEvent.VK_2;}
@@ -78,8 +94,6 @@ public class KeyboardManager {
         else if(key.equals("7")){ return KeyEvent.VK_7;}
         else if(key.equals("8")){ return KeyEvent.VK_8;}
         else if(key.equals("9")){ return KeyEvent.VK_9;}
-        else if(key.equals("SEMICOLON")){ return KeyEvent.VK_SEMICOLON;}
-        else if(key.equals("=")){ return KeyEvent.VK_EQUALS;}
         else if(key.equalsIgnoreCase("A")){ return KeyEvent.VK_A;}
         else if(key.equalsIgnoreCase("B")){ return KeyEvent.VK_B;}
         else if(key.equalsIgnoreCase("C")){ return KeyEvent.VK_C;}
@@ -106,26 +120,6 @@ public class KeyboardManager {
         else if(key.equalsIgnoreCase("X")){ return KeyEvent.VK_X;}
         else if(key.equalsIgnoreCase("Y")){ return KeyEvent.VK_Y;}
         else if(key.equalsIgnoreCase("Z")){ return KeyEvent.VK_Z;}
-        else if(key.equals("OPEN_BACKET")){ return KeyEvent.VK_OPEN_BRACKET;}
-        else if(key.equals("BACK_SLASH")){ return KeyEvent.VK_BACK_SLASH;}
-        else if(key.equals("CLOSE_BRACKET")){ return KeyEvent.VK_CLOSE_BRACKET;}
-        else if(key.equals("MULTIPLY")){ return KeyEvent.VK_MULTIPLY;}
-        else if(key.equals("PLUS")){ return KeyEvent.VK_PLUS;}
-        else if(key.equals("QUOTE")){ return KeyEvent.VK_QUOTE;}
-        else if(key.equals("APERSAND")){ return KeyEvent.VK_AMPERSAND;}
-        else if(key.equals("LESS")){ return KeyEvent.VK_LESS;}
-        else if(key.equals("GREATER")){ return KeyEvent.VK_GREATER;}
-        else if(key.equals("COLON")){ return KeyEvent.VK_COLON;}
-        else if(key.equals("CIRCUMFLEX")){ return KeyEvent.VK_CIRCUMFLEX;}
-        else if(key.equals("DOLLAR")){ return KeyEvent.VK_DOLLAR;}
-        else if(key.equals("EURO_SIGN¬")){ return KeyEvent.VK_EURO_SIGN;}
-        else if(key.equals("EXCLAMATION_MARK")){ return KeyEvent.VK_EXCLAMATION_MARK;}
-        else if(key.equals("INVERTED_EXCLAMATION_MARK")){ return KeyEvent.VK_INVERTED_EXCLAMATION_MARK;}
-        else if(key.equals("LEFT_PARENTHESIS")){ return KeyEvent.VK_LEFT_PARENTHESIS;}
-        else if(key.equals("NUMBER_SIGN")){ return KeyEvent.VK_NUMBER_SIGN;}
-        else if(key.equals("RIGHT_PARENTHESIS")){ return KeyEvent.VK_RIGHT_PARENTHESIS;}
-        else if(key.equals("UNDERSCORE")){ return KeyEvent.VK_UNDERSCORE;}
-        
         
         return -1;
     }

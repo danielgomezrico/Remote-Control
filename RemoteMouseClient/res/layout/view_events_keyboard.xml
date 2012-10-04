@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/view_events_keyboard_text"
         android:layout_centerHorizontal="true"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
         <RadioButton
             android:id="@+id/view_events_keyboard_radio_number"
@@ -31,14 +31,14 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:onClick="radioKeyboardTypeNumberOnTouch"
-            android:text="Solo Numeros" />
+            android:text="Numbers" />
 
         <RadioButton
             android:id="@+id/view_events_keyboard_radio_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="radioKeyboardTypeTextOnTouch"
-            android:text="Todos" />
+            android:text="Text" />
     </RadioGroup>
 
 </RelativeLayout>

@@ -19,16 +19,13 @@ public class KeyboardManager {
 			return "CAPS";
 
 		} else if (keyCode == KeyEvent.KEYCODE_MINUS) {
-			return "MINUS";
+			return "-";
 
 		} else if (keyCode == KeyEvent.KEYCODE_PLUS) {
-			return "PLUS";
+			return "+";
 
-		} else if (keyCode == KeyEvent.KEYCODE_COMMA) {
-			return "COMMA";
-
-		} else if (keyCode == KeyEvent.KEYCODE_PERIOD) {
-			return "PERIOD";
+		}  else if (keyCode == KeyEvent.KEYCODE_PERIOD) {
+			return ".";
 		}
 		else {
 			return null;
@@ -37,10 +34,10 @@ public class KeyboardManager {
 
 	public static String getValueToSend(char letter) {
 
-		if (letter == ',') {
+		/*if (letter == ',') {
 			return "COMMA";
 		}
-		else if (letter == '-') {
+		else*/ /*if (letter == '-') {
 			return "MINUS";
 		}
 		else if (letter == '.') {
@@ -109,8 +106,8 @@ public class KeyboardManager {
 		else if (letter == '_') {
 			return "UNDERSCORE";
 		}
-		else {
+		else {*/
 			return "" + letter;
-		}
+		//}
 	}
 }

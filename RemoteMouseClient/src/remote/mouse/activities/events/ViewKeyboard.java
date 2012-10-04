@@ -78,7 +78,7 @@ public class ViewKeyboard extends Activity implements TextWatcher,
 			final int before, final int count) {
 
 		if (count != 0) {
-			Log.d("Key + ", s + "");
+			Log.d("Key1 ", s + "");
 			String value = KeyboardManager.getValueToSend(s.charAt(0));
 			MessageSender.getInstance().sendKeyboardMessage(value);
 		}
