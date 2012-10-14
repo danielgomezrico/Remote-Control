@@ -10,9 +10,8 @@
     </uses-permission>
 
     <application
-        android:debuggable="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name">
         <activity android:name=".activities.ViewConnection" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,12 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.events.ViewMouse" />
         <activity
-            android:name=".activities.events.ViewKeyboard"
+            android:name=".activities.ViewEvents"
             android:windowSoftInputMode="stateAlwaysVisible" />
-        <activity android:name=".activities.ViewTab" >
-        </activity>
     </application>
 
 </manifest>

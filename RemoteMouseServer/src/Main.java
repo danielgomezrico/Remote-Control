@@ -4,16 +4,15 @@
  */
 
 import controllers.FrameConnectionController;
-import model.server.UDPServer;
 
 public class Main {
 
 	/**
 	 * @param args the command line arguments
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 
-		FrameConnectionController controller = new FrameConnectionController();
+		new FrameConnectionController();
 
 	}
 }

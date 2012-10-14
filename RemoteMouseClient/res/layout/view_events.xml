@@ -11,10 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@android:drawable/btn_default"
+        android:background="@drawable/view_events_keyboard"
         android:inputType="number" >
-
-        <requestFocus />
     </EditText>
 
     <RadioGroup
@@ -29,16 +27,17 @@
             android:id="@+id/view_events_keyboard_radio_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:checked="true"
             android:onClick="radioKeyboardTypeNumberOnTouch"
-            android:text="Numbers" />
+            android:text="@string/view_events_radio_numbers" />
 
         <RadioButton
             android:id="@+id/view_events_keyboard_radio_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="radioKeyboardTypeTextOnTouch"
-            android:text="Text" />
+            android:text="@string/view_events_radio_text" />
     </RadioGroup>
 
 </RelativeLayout>

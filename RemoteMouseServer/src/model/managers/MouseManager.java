@@ -5,58 +5,81 @@
 package model.managers;
 
 import java.awt.*;
+import java.awt.event.InputEvent;
 
 /**
  *
  * @author danielgomezrico
  */
 public class MouseManager {
+	
+	// ---------------------------------------------
+	// Attributes
+	// ---------------------------------------------
+	
+	private Robot robot;
+	private int mouseX, mouseY;
+	private double offsetX = 1.8, offsetY = 1.8; // Calculated based on screen size
+	        
+	// ---------------------------------------------
+	// Constructor
+	// ---------------------------------------------
+	
+	public MouseManager() {
+		try {
+			robot = new Robot();
+			
+			//Get initial position of the mouse
+			PointerInfo a = MouseInfo.getPointerInfo();
+			Point b = a.getLocation();
+			mouseX = (int) b.getX();
+			mouseY = (int) b.getY();
+			
+			//Get display size
+			// Get the size of the default screen
+			/*Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
-    private Robot _robot;
-    private int _mouseX, _mouseY;
-    //private double _screenWidth, _screenHeight;
-    private double _offsetX = 1.8, _offsetY = 1.8; // Calculated based on screen size
-    
-    public MouseManager() {
-        try {
-            _robot = new Robot();
-
-            //Get initial position of the mouse
-            PointerInfo a = MouseInfo.getPointerInfo();
-            Point b = a.getLocation();
-            _mouseX = (int) b.getX();
-            _mouseY = (int) b.getY();
-
-            //Get display size
-            // Get the size of the default screen
-            /*Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-
-            _screenWidth = dim.getWidth();
-            _screenHeight = dim.getHeight();
-                
-            _offsetX = _screenWidth/20;
-            _offsetY = _screenHeight/20;*/
-
-        } catch (AWTException ex) {
-            //Logger.getLogger(MouseManager.class.getName()).log(Level.SEVERE, null, ex);
-            //TODO: Manage errors
-        }
-    }
-
-    public void moveMouse(int offsetX, int offsetY) {
-
-        _mouseX += offsetX*_offsetX;
-        _mouseY += offsetY*_offsetY;
-
-        //TODO: Check if this do something
-        if (_mouseX < 0) {
-            _mouseX = 0;
-        }
-
-        if (_mouseY < 0) {
-            _mouseY = 0;
-        }
-
-        _robot.mouseMove(_mouseX, _mouseY);
-    }
+			_screenWidth = dim.getWidth();
+			_screenHeight = dim.getHeight();
+			    
+			_offsetX = _screenWidth/20;
+			_offsetY = _screenHeight/20;*/
+			
+		} catch (AWTException ex) {
+			//TODO: Manage errors
+		}
+	}
+	
+	// ---------------------------------------------
+	// Generate events methods
+	// ---------------------------------------------
+	
+	public void move(int offsetX, int offsetY) {
+		
+		mouseX += offsetX * this.offsetX;
+		mouseY += offsetY * this.offsetY;
+		
+		//TODO: Check if this do something
+		if (mouseX < 0) {
+			mouseX = 0;
+		}
+		
+		if (mouseY < 0) {
+			mouseY = 0;
+		}
+		
+		robot.mouseMove(mouseX, mouseY);
+	}
+	
+	public void click(int button) {
+		if (button == 1) {
+			robot.mousePress(InputEvent.BUTTON1_MASK);
+			robot.mouseRelease(InputEvent.BUTTON1_MASK);
+		} else if (button == 2) {
+			robot.mousePress(InputEvent.BUTTON2_MASK);
+			robot.mouseRelease(InputEvent.BUTTON2_MASK);
+			
+		}
+	}
+	
 }

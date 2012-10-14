@@ -1,76 +1,75 @@
 package remote.mouse.model.udp;
 
-import java.net.InetSocketAddress;
-
-import org.apache.mina.core.buffer.IoBuffer;
-import org.apache.mina.core.future.ConnectFuture;
-import org.apache.mina.core.future.IoFutureListener;
-import org.apache.mina.core.session.IoSession;
-import org.apache.mina.transport.socket.nio.NioDatagramConnector;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 public class Client {
-
-	private IoSession session;
-	private ConnectFuture connectFuture;
-	private Handler handler;
+	
+	// ------------------------------------------------------
+	// Constants
+	// ------------------------------------------------------
 	
 	private static Client instance;
 	
-	private Client(){
+	// ------------------------------------------------------
+	// Attributes
+	// ------------------------------------------------------
+	
+	private DatagramSocket socket;
+	private InetAddress address;
+	private int port;
+	
+	// ------------------------------------------------------
+	// Constructor
+	// ------------------------------------------------------
+	
+	private Client() throws SocketException {
+		socket = new DatagramSocket();
 	}
 	
-	public static Client getInstance(){
-		if(instance == null){
+	public static Client getInstance() throws SocketException {
+		if (instance == null) {
 			instance = new Client();
 		}
 		
 		return instance;
 	}
-
-	public void connect(String ip, int port) {
-
-		if (session == null || !session.isConnected()) {
-
-			// Initialize connection
-			NioDatagramConnector datagramConnector = new NioDatagramConnector();
-			handler = new Handler();
-			datagramConnector.setHandler(handler);
+	
+	// ------------------------------------------------------
+	// Send message methods
+	// ------------------------------------------------------
+	
+	public void send(final String message) {
+		
+		try {
 			
-			connectFuture = datagramConnector.connect(new InetSocketAddress(ip, port));
-			connectFuture.addListener(new IoFutureListener<ConnectFuture>() {
-
-				@Override
-				public void operationComplete(ConnectFuture arg0) {
-					if (connectFuture.isConnected()) {
-						session = connectFuture.getSession();
-					}
-				}
-			});
-
+			final DatagramPacket p = new DatagramPacket(message.getBytes(), message.length(), address,
+			        port);
+			socket.send(p);
+			
+		} catch (final SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (final IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 	}
 	
-	public void disconnect(){
-		if(session != null){
-			session.close(false);//Now
-			connectFuture.cancel();
-		}
-	}
-
-	public void send(String message){
-		send(message.getBytes());
+	// ------------------------------------------------------
+	// Accessor methods
+	// ------------------------------------------------------
+	
+	public void setIp(String ip) throws UnknownHostException {
+		this.address = InetAddress.getByName(ip);
 	}
 	
-	private void send(byte[] data){
-		
-		if(data == null || session == null || !session.isConnected()){
-			return;
-		}
-		
-		IoBuffer buffer = IoBuffer.allocate(data.length);
-		buffer.put(data);
-		buffer.flip();
-		
-		session.write(buffer);
+	public void setPort(int port) {
+		this.port = port;
 	}
 }
