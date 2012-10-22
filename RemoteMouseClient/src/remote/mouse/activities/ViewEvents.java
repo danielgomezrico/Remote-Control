@@ -4,20 +4,17 @@ import remote.mouse.R;
 import remote.mouse.model.KeyboardManager;
 import remote.mouse.model.MessageSender;
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
-import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
@@ -37,7 +34,7 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 	 * Constant for defining the time duration between the click that 
 	 * can be considered as double-tap, used to check click and double click
 	 */
-	static final int MAX_DURATION = 400;
+	static final int MAX_DURATION = 250;
 	
 	// ------------------------------------------------------
 	// Attributes
@@ -61,37 +58,22 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		
 		setContentView(R.layout.view_events);
 		
+		sender = MessageSender.getInstance();
+		
+		// Set the text listeners for keyboard messages
 		editText = (EditText) findViewById(R.id.view_events_keyboard_text);
 		editText.addTextChangedListener(this);
 		editText.setOnKeyListener(this);
 		
-		// Set the touch listener
-		((RelativeLayout) findViewById(R.id.layoutMain)).setOnTouchListener(this);
-		
-		sender = MessageSender.getInstance();
-		
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
-		InputMethodManager imm = (InputMethodManager) this
-		        .getSystemService(Context.INPUT_METHOD_SERVICE);
-		
-		if (imm != null) {
-			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-		}
-		
-		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+		// Set the touch listener for mouse messages
+		((RelativeLayout) findViewById(R.id.view_events_layout_main)).setOnTouchListener(this);
 		
 	}
 	
 	// ------------------------------------------------------
-	// TextWatcher overrides
+	// OnKeyListener overrides
 	// ------------------------------------------------------
 	
 	@Override
@@ -110,6 +92,7 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 	public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
 		
 		if (count != 0) {
+			Log.d("Remote 1", "'" + s + "'");
 			String value = KeyboardManager.getValueToSend(s.charAt(0));
 			MessageSender.getInstance().sendKeyboardMessage(value);
 		}
@@ -126,6 +109,8 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 		if (event.getAction() == KeyEvent.ACTION_DOWN) {
 			
 			String value = KeyboardManager.getValueToSend(keyCode);
+			
+			Log.d("Remote 2", "'" + value + "'" + " " + keyCode);
 			
 			if (value != null) {
 				MessageSender.getInstance().sendKeyboardMessage(value);
@@ -145,10 +130,11 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 		
 		int x = (int) event.getX();
 		int y = (int) event.getY();
+		boolean validMovement = false;
 		
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN:
-				
+				validMovement = false;
 				lastMouseX = x;
 				lastMouseY = y;
 				
@@ -159,10 +145,21 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 			
 			case MotionEvent.ACTION_MOVE:
 				
-				sender.sendMouseMovementMessage(x - lastMouseX, y - lastMouseY);
+				if (!validMovement) {
+					int offX = x - lastMouseX;
+					int offY = y - lastMouseY;
+					if (offX > 5 || offY > 5) {
+						validMovement = true;
+					}
+				}
 				
-				lastMouseX = x;
-				lastMouseY = y;
+				if (validMovement) {
+					sender.sendMouseMovementMessage(x - lastMouseX, y - lastMouseY);
+					
+					lastMouseX = x;
+					lastMouseY = y;
+					
+				}
 				
 				break;
 			
@@ -195,11 +192,14 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 	// ------------------------------------------------------
 	
 	public void radioKeyboardTypeNumberOnTouch(View view) {
-		editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+		editText.setInputType(InputType.TYPE_CLASS_PHONE);
 	}
 	
 	public void radioKeyboardTypeTextOnTouch(View view) {
 		editText.setInputType(InputType.TYPE_CLASS_TEXT);
 	}
 	
+	public void leftClickOnTouch(View view) {
+		
+	}
 }

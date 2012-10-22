@@ -51,13 +51,15 @@ public class KeyboardManager {
 	public void pressKey(String key) {
 		
 		int code = getKeyCode(key);
+		
+		System.out.println("SERVER Key '" + key + "'");
+		
 		robot.keyPress(code);
 		robot.keyRelease(code);
 		
 	}
 	
 	private int getKeyCode(String key) {
-		System.out.println("SERVER Key " + key);
 		if (key.equals("ENTER")) {
 			return KeyEvent.VK_ENTER;
 		} else if (key.equals("BACK_SPACE")) {
@@ -78,9 +80,11 @@ public class KeyboardManager {
 			return KeyEvent.VK_DELETE;
 		} else if (key.equals("EURO_SIGN¬")) {
 			return KeyEvent.VK_EURO_SIGN;
-		} else if (key.equals(" ")) {
+		} else if (key.equals("SPACE")) {
 			return KeyEvent.VK_SPACE;
-		} else if (key.equals(",")) {
+		}else if (key.equals("@")) {
+			return KeyEvent.VK_AT;
+		}else if (key.equals(",")) {
 			return KeyEvent.VK_COMMA;
 		} else if (key.equals("-")) {
 			return KeyEvent.VK_MINUS;
@@ -101,7 +105,7 @@ public class KeyboardManager {
 		} else if (key.equals("\\")) {
 			return KeyEvent.VK_BACK_SLASH;
 		} else if (key.equals("*")) {
-			return KeyEvent.VK_MULTIPLY;
+			return KeyEvent.VK_ASTERISK;
 		} else if (key.equals("+")) {
 			return KeyEvent.VK_PLUS;
 		} else if (key.equals("\"")) {

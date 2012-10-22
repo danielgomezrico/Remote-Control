@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/layout1"
+    <TextView
+        android:id="@+id/view_connection_text_head"
+        style="@style/labels"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/view_connection_info_head"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30dp" />
+
+    <LinearLayout
+        android:id="@+id/view_connection_layout_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_connection_text_head"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/view_connection_text_ip"
-            android:layout_width="wrap_content"
+            style="@style/labels"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:text="@string/view_connection_info_text_ip"
@@ -21,7 +35,8 @@
 
         <EditText
             android:id="@+id/view_connection_text_ip1"
-            android:layout_width="55dp"
+            style="@style/editables"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:maxLength="3" >
@@ -29,36 +44,42 @@
 
         <EditText
             android:id="@+id/view_connection_text_ip2"
-            android:layout_width="55dp"
+            style="@style/editables"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:maxLength="3" />
 
         <EditText
             android:id="@+id/view_connection_text_ip3"
-            android:layout_width="55dp"
+            style="@style/editables"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:maxLength="3" />
 
         <EditText
             android:id="@+id/view_connection_text_ip4"
-            android:layout_width="55dp"
+            style="@style/editables"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:maxLength="3" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout2"
+        android:id="@+id/view_connection_layout_middle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/view_connection_layout_head"
+        android:layout_below="@id/view_connection_layout_head"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/view_connection_text_port"
-            android:layout_width="wrap_content"
+            style="@style/labels"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:text="@string/view_connection_info_text_port"
@@ -66,18 +87,21 @@
 
         <EditText
             android:id="@+id/view_connection_text_port_value"
-            android:layout_width="85dp"
+            style="@style/editables"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:inputType="number" >
         </EditText>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/view_connection_button_connect"
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_below="@+id/view_connection_layout_middle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:onClick="buttonConnectOnClick"
-        android:text="@string/view_connection_button_text_connect" />
+        android:src="@drawable/view_connection_connect" />
 
-</LinearLayout>
+</RelativeLayout>

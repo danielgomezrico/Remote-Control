@@ -39,7 +39,7 @@ public class MessageManager {
 	// ---------------------------------------------
 	
 	public void manage(String message) {
-		System.out.println("Message: " + message);
+		
 		if (message.startsWith("mm")) {
 			String[] values = message.split(" ");
 			

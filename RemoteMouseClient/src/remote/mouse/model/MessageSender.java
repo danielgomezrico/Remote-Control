@@ -60,10 +60,6 @@ public class MessageSender {
 	
 	public void sendKeyboardMessage(String value) {
 		
-		if (value.equals(" ")) {
-			value = "SPACE";
-		}
-		
 		client.send("k " + value);
 		
 	}

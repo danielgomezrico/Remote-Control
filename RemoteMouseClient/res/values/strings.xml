@@ -2,8 +2,9 @@
 <resources>
 
     <string name="app_name">RemoteControl</string>
-    <string name="view_connection_info_text_ip">Server IP:</string>
-    <string name="view_connection_info_text_port">Server Port:</string>
+    <string name="view_connection_info_head">Server info</string>
+    <string name="view_connection_info_text_ip">IP:</string>
+    <string name="view_connection_info_text_port">Port:</string>
     <string name="view_connection_button_text_connect">Connect</string>
     <string name="view_connection_default_ip">192.168.1.101</string>
     <string name="view_connection_default_port">Connect</string>
