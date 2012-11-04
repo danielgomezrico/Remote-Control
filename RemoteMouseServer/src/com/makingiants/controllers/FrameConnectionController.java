@@ -2,13 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package com.makingiants.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.server.UDPServer;
-import views.FrameConnection;
+import com.makingiants.model.server.UDPServer;
+import com.makingiants.views.FrameConnection;
+
 
 public class FrameConnectionController implements ActionListener {
 	

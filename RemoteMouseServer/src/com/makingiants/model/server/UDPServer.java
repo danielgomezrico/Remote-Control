@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.server;
+package com.makingiants.model.server;
 
 import java.io.IOException;
 import java.net.InetAddress;

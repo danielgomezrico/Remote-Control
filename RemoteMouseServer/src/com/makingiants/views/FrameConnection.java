@@ -1,4 +1,4 @@
-package views;
+package com.makingiants.views;
 
 import java.awt.Font;
 
@@ -11,7 +11,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
 
-import controllers.FrameConnectionController;
+import com.makingiants.controllers.FrameConnectionController;
+
 
 @SuppressWarnings("serial")
 public class FrameConnection extends JFrame {

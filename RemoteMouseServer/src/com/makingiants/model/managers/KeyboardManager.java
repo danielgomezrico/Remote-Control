@@ -1,4 +1,4 @@
-package model.managers;
+package com.makingiants.model.managers;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -82,9 +82,9 @@ public class KeyboardManager {
 			return KeyEvent.VK_EURO_SIGN;
 		} else if (key.equals("SPACE")) {
 			return KeyEvent.VK_SPACE;
-		}else if (key.equals("@")) {
+		} else if (key.equals("@")) {
 			return KeyEvent.VK_AT;
-		}else if (key.equals(",")) {
+		} else if (key.equals(",")) {
 			return KeyEvent.VK_COMMA;
 		} else if (key.equals("-")) {
 			return KeyEvent.VK_MINUS;

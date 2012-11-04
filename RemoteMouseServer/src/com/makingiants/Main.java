@@ -1,9 +1,10 @@
+package com.makingiants;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import controllers.FrameConnectionController;
+import com.makingiants.controllers.FrameConnectionController;
 
 public class Main {
 

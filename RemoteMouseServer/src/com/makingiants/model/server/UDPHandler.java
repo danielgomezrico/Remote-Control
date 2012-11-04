@@ -2,12 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.server;
+package com.makingiants.model.server;
 
-import model.managers.MessageManager;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
+
+import com.makingiants.model.managers.MessageManager;
 
 /**
  *
