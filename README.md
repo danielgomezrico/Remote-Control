@@ -9,8 +9,17 @@ Folders
 + RemoteMouseClient : Android client
 + RemoteMouseServer : Desktop Server
 
-By
+
+WebPage
+===========
+http://www.makingiants.com/
+
+
+
+About
 ===========
 Daniel Gomez Rico
-Systems Engineer from Colombia
-2012/09/13
+danielgomezrico@gmail.com
+System Ingeneer
+Medellín, Colombia
+
