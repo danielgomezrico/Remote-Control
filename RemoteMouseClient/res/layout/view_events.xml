@@ -3,10 +3,9 @@
     android:id="@+id/view_events_layout_main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
 
-    <RelativeLayout
-        android:id="@+id/view_events_layout_actions"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -16,43 +15,17 @@
             android:id="@+id/view_events_keyboard_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
             android:background="@drawable/view_events_keyboard"
-            android:inputType="phone" >
+            android:inputType="text" >
         </EditText>
 
-        <ImageView
+        <EditText
+            android:id="@+id/view_events_keyboard_numbers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/view_events_keyboard_text"
-            android:onClick="leftClickOnTouch"
-            android:src="@drawable/view_events_mouse" />
-    </RelativeLayout>
-
-    <RadioGroup
-        android:id="@+id/view_events_keyboard_radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/view_events_layout_actions"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/view_events_keyboard_radio_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:checked="true"
-            android:onClick="radioKeyboardTypeNumberOnTouch"
-            android:text="@string/view_events_radio_numbers" />
-
-        <RadioButton
-            android:id="@+id/view_events_keyboard_radio_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="radioKeyboardTypeTextOnTouch"
-            android:text="@string/view_events_radio_text" />
-    </RadioGroup>
+            android:background="@drawable/view_events_numbers"
+            android:inputType="phone" >
+        </EditText>
+    </LinearLayout>
 
 </RelativeLayout>

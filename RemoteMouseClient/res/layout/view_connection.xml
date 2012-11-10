@@ -13,7 +13,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/view_connection_info_head"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30dp" />
+        android:textSize="35dp" />
 
     <LinearLayout
         android:id="@+id/view_connection_layout_head"
@@ -27,7 +27,7 @@
         <TextView
             android:id="@+id/view_connection_text_ip"
             style="@style/labels"
-            android:layout_width="50dp"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:text="@string/view_connection_info_text_ip"
@@ -79,7 +79,7 @@
         <TextView
             android:id="@+id/view_connection_text_port"
             style="@style/labels"
-            android:layout_width="50dp"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:text="@string/view_connection_info_text_port"
@@ -94,13 +94,26 @@
         </EditText>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView1"
+    <TextView
+        android:id="@+id/view_connection_text_body"
+        style="@style/labels"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/view_connection_layout_middle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/view_connection_info_body"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="35dp" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_connection_text_body"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/images_content_description"
         android:onClick="buttonConnectOnClick"
         android:src="@drawable/view_connection_connect" />
 
