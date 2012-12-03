@@ -13,7 +13,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.makingiants.R;
+import com.makingiants.remotecontrol.R;
 import com.makingiants.model.udp.Client;
 
 public class ViewConnection extends Activity {

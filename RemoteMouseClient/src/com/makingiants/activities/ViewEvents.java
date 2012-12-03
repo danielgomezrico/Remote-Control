@@ -13,7 +13,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
-import com.makingiants.R;
+import com.makingiants.remotecontrol.R;
 import com.makingiants.model.KeyboardManager;
 import com.makingiants.model.MessageSender;
 
