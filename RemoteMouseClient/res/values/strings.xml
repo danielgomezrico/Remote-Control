@@ -2,16 +2,18 @@
 <resources>
 
     <string name="app_name">Corol</string>
-    <string name="view_connection_info_head">1. Set Server info</string>
-    <string name="view_connection_info_body">2. Start</string>
+    <string name="view_connection_ip_broadcast">255.255.255.255</string>
+    <string name="view_connection_info_head">Set Server info</string>
     <string name="view_connection_info_text_ip">IP:</string>
     <string name="view_connection_info_text_port">Port:</string>
-    <string name="view_connection_button_text_connect">Connect</string>
     <string name="view_connection_default_ip">192.168.1.101</string>
     <string name="view_connection_default_port">Connect</string>
     <string name="view_connection_message_empty_input">Ningun campo puede estar vacio</string>
     <string name="view_events_radio_numbers">Números</string>
     <string name="view_events_radio_text">Texto</string>
     <string name="images_content_description"></string>
+    <string name="view_connection_info_text_ip_info">IP</string>
+    <string name="view_connection_info_text_ip_manual">Manual</string>
+    <string name="view_connection_info_text_ip_auto">Auto</string>
 
 </resources>

@@ -6,113 +6,139 @@
 
     <TextView
         android:id="@+id/view_connection_text_head"
-        style="@style/labels"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="22dp"
         android:text="@string/view_connection_info_head"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35dp" />
+        android:textColor="@color/labels"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
 
-    <LinearLayout
-        android:id="@+id/view_connection_layout_head"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/view_connection_text_ip_info"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/view_connection_text_head"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/view_connection_info_text_ip_info"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/labels"
+        android:textStyle="bold"
+        android:typeface="serif" />
+
+    <RadioGroup
+        android:id="@+id/view_connection_layout_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_connection_text_ip_info"
+        android:layout_centerHorizontal="true"
         android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/view_connection_text_ip"
-            style="@style/labels"
-            android:layout_width="55dp"
+        <RadioButton
+            android:id="@+id/view_connection_check_ip_auto"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text="@string/view_connection_info_text_ip"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:checked="true"
+            android:onClick="onCheckboxClicked"
+            android:text="@string/view_connection_info_text_ip_auto"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/labels"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <RadioButton
+            android:id="@+id/view_connection_check_ip_manual"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:onClick="onCheckboxClicked"
+            android:text="@string/view_connection_info_text_ip_manual"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/labels"
+            android:textStyle="bold"
+            android:typeface="serif" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/view_connection_layout_ip_values"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_connection_layout_ip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:visibility="gone" >
 
         <EditText
             android:id="@+id/view_connection_text_ip1"
-            style="@style/editables"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:inputType="number"
             android:maxLength="3" >
         </EditText>
 
         <EditText
             android:id="@+id/view_connection_text_ip2"
-            style="@style/editables"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:inputType="number"
             android:maxLength="3" />
 
         <EditText
             android:id="@+id/view_connection_text_ip3"
-            style="@style/editables"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:inputType="number"
             android:maxLength="3" />
 
         <EditText
             android:id="@+id/view_connection_text_ip4"
-            style="@style/editables"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:inputType="number"
             android:maxLength="3" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/view_connection_layout_middle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/view_connection_layout_head"
-        android:layout_below="@id/view_connection_layout_head"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/view_connection_text_port"
-            style="@style/labels"
-            android:layout_width="55dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text="@string/view_connection_info_text_port"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <EditText
-            android:id="@+id/view_connection_text_port_value"
-            style="@style/editables"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:inputType="number" >
-        </EditText>
-    </LinearLayout>
-
     <TextView
-        android:id="@+id/view_connection_text_body"
-        style="@style/labels"
-        android:layout_width="wrap_content"
+        android:id="@+id/view_connection_text_port"
+        android:layout_width="55dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/view_connection_layout_middle"
+        android:layout_below="@id/view_connection_layout_ip_values"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/view_connection_info_body"
+        android:layout_marginTop="10dp"
+        android:text="@string/view_connection_info_text_port"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35dp" />
+        android:textColor="@color/labels"
+        android:textStyle="bold"
+        android:typeface="serif" />
+
+    <EditText
+        android:id="@+id/view_connection_text_port_value"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_connection_text_port"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:inputType="number" >
+    </EditText>
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/view_connection_text_body"
+        android:layout_below="@+id/view_connection_text_port_value"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="@string/images_content_description"
         android:onClick="buttonConnectOnClick"
         android:src="@drawable/view_connection_connect" />
