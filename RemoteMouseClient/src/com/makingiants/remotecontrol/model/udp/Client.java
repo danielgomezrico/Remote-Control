@@ -1,4 +1,4 @@
-package com.makingiants.model.udp;
+package com.makingiants.remotecontrol.model.udp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -19,7 +19,7 @@ public class Client {
 	// Attributes
 	// ------------------------------------------------------
 	
-	private DatagramSocket socket;
+	private final DatagramSocket socket;
 	private InetAddress address;
 	private int port;
 	
@@ -52,24 +52,26 @@ public class Client {
 			socket.send(p);
 			
 		} catch (final SocketException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (final IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void setBroadcast(boolean broadcast) throws SocketException {
+		socket.setBroadcast(broadcast);
 	}
 	
 	// ------------------------------------------------------
 	// Accessor methods
 	// ------------------------------------------------------
 	
-	public void setIp(String ip) throws UnknownHostException {
+	public void setIp(final String ip) throws UnknownHostException {
 		this.address = InetAddress.getByName(ip);
 	}
 	
-	public void setPort(int port) {
+	public void setPort(final int port) {
 		this.port = port;
 	}
 }

@@ -1,4 +1,4 @@
-package com.makingiants.activities;
+package com.makingiants.remotecontrol.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.makingiants.remotecontrol.R;
-import com.makingiants.model.KeyboardManager;
-import com.makingiants.model.MessageSender;
+import com.makingiants.remotecontrol.model.KeyboardManager;
+import com.makingiants.remotecontrol.model.MessageSender;
 
 /**
  * 
@@ -23,15 +23,16 @@ import com.makingiants.model.MessageSender;
  *
  * TODO: add right click check to send the message 
  */
-public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, OnTouchListener {
+public class ViewEvents extends Activity implements TextWatcher, OnKeyListener,
+		OnTouchListener {
 	
 	// ------------------------------------------------------
 	// Constants
 	// ------------------------------------------------------
 	
-	/* 
-	 * Constant for defining the time duration between the click that 
-	 * can be considered as double-tap, used to check click and double click
+	/*
+	 * Constant for defining the time duration between the click that can be
+	 * considered as double-tap, used to check click and double click
 	 */
 	static final int MAX_DURATION = 250;
 	
@@ -42,11 +43,12 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 	private EditText editText;
 	private EditText editTextNumbers;
 	
-	private int clickCount = 0;//variable for counting two successive up-down events
-	private long startTime;//variable for storing the time of first click
-	private long duration;//variable for calculating the total time
+	private int clickCount = 0;// variable for counting two successive up-down
+								// events
+	private long startTime;// variable for storing the time of first click
+	private long duration;// variable for calculating the total time
 	
-	//Mouse
+	// Mouse
 	private int lastMouseX, lastMouseY;
 	private MessageSender sender;
 	
@@ -73,7 +75,8 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 		editTextNumbers.setOnKeyListener(this);
 		
 		// Set the touch listener for mouse messages
-		((RelativeLayout) findViewById(R.id.view_events_layout_main)).setOnTouchListener(this);
+		((RelativeLayout) findViewById(R.id.view_events_layout_main))
+				.setOnTouchListener(this);
 		
 	}
 	
@@ -93,12 +96,14 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 	}
 	
 	@Override
-	public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
+	public void beforeTextChanged(final CharSequence s, final int start,
+			final int count, final int after) {
 		
 	}
 	
 	@Override
-	public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
+	public void onTextChanged(final CharSequence s, final int start,
+			final int before, final int count) {
 		
 		if (count != 0) {
 			String value = KeyboardManager.getValueToSend(s.charAt(0));
@@ -127,7 +132,7 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 		return false;
 	}
 	
-	//------------------------------------------------------
+	// ------------------------------------------------------
 	// OnTouchListener overrides
 	// ------------------------------------------------------
 	
@@ -160,7 +165,8 @@ public class ViewEvents extends Activity implements TextWatcher, OnKeyListener, 
 				}
 				
 				if (validMovement) {
-					sender.sendMouseMovementMessage(x - lastMouseX, y - lastMouseY);
+					sender.sendMouseMovementMessage(x - lastMouseX, y
+							- lastMouseY);
 					
 					lastMouseX = x;
 					lastMouseY = y;
