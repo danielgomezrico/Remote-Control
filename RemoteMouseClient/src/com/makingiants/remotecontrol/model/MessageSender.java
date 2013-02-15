@@ -1,10 +1,10 @@
-package com.makingiants.model;
+package com.makingiants.remotecontrol.model;
 
 import java.net.SocketException;
 
 import android.util.Log;
 
-import com.makingiants.model.udp.Client;
+import com.makingiants.remotecontrol.model.udp.Client;
 
 public class MessageSender {
 	
